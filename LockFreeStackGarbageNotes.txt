@@ -1,0 +1,33 @@
+X Y Z
+to_be_deleted = A
+threads = 0
+
+1. Thread A
+  Pop()
+  TryReclaim()
+  num_threads == 1
+  PREEMPT      stack=Y Z        old_head = X     to_be_del = A
+
+2. Thread B
+  Pop()
+  old_head = Y             (head=Y and old_head=Y)
+  PREEMPT      stack=Y Z        old_head = Y     to_be_del = A
+
+3. Thread C
+  Pop()
+  TryReclaim()
+  old_head = Y
+  num_threads = 3
+  AddNode(Y, Y)
+  DONEEEE      stack= Z                        to_be_del = Y A
+
+4. Thread A
+  num_threads = 2
+  first_node_to_delete = Y        (list: Y ---> A)
+  PREEMPT      stack=Y Z        old_head = Y     to_be_del = NULL
+
+5. Thread B
+  head.compare_and_exchange_weak(old_head, old_head->next)
+  since old_head = Y.. but it is in the "to be del" list of A
+
+  // TODO: Understand hazard pointer. 7.6
