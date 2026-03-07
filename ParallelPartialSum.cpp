@@ -20,12 +20,14 @@ struct ProcessChunk {  // 1
 
   void operator()(Iterator begin, Iterator last, std::future<value_type>* previous_end_value,
                   std::promise<value_type>* end_value) {
+    // Logic: Partial sum of range. Then previous is added to each element of the result. Return
+    // last
     Iterator end = last;
     ++end;
-    std::partial_sum(begin, end, begin);                                           // 2
-    if (previous_end_value) {                                                      // 3
-      value_type& addend = previous_end_value->get();                              // 4
-      *last += addend;                                                             // 5
+    std::partial_sum(begin, end, begin);               // 2
+    if (previous_end_value) {                          // 3
+      value_type& addend = previous_end_value->get();  // 4
+      *last += addend;  // 5 [Update 'last' first so that next chunk can proceed!]
       if (end_value) end_value->set_value(*last);                                  // 6
       std::for_each(begin, last, [addend](value_type& item) { item += addend; });  // 7
     } else if (end_value) {
@@ -54,6 +56,8 @@ void ParallelPartialSum(Iterator first, Iterator last) {
   previous_end_values.reserve(num_threads - 1);                       // 16
   JoinThreads joiner(threads);
 
+  //         s     l
+  // 0 1 2 3 4 5 6 7 8 9
   Iterator block_start = first;
   for (unsigned long i = 0; i < (num_threads - 1); ++i) {
     Iterator block_last = block_start;
