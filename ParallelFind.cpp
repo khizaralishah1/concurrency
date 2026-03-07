@@ -18,8 +18,30 @@ class JoinThreads {
   std::vector<std::thread>& threads;
 };
 
-template <typename Iterator, typename Func>
-void ParallelForEach(Iterator first, Iterator last, Func func) {
+template <typename Iterator, typename MatchType>
+struct FindElement {
+  void operator()(Iterator begin, Iterator end, MatchType match, std::promise<Iterator>* result,
+                  std::atomic<bool>* done_flag) {
+    try {
+      for (; begin != end && !done_flag->load(); ++begin) {
+        if (*begin == match) {
+          result->set_value(begin);
+          done_flag->store(true);
+          return;
+        }
+      }
+    } catch (...) {
+      try {
+        result->set_exception(std::current_exception());
+        done_flag->store(true);
+      } catch (...) {
+      }
+    }
+  }
+};
+
+template <typename Iterator, typename MatchType>
+void ParallelFind(Iterator first, Iterator last, MatchType match) {
   unsigned long const length = std::distance(first, last);
   if (!length) return;
 
@@ -47,5 +69,32 @@ void ParallelForEach(Iterator first, Iterator last, Func func) {
 
   for (unsigned long i = 0; i < (num_threads - 1); ++i) {
     futures[i].get();
+  }
+}
+
+// SECOND IMPLEMENTATION
+template <typename Iterator, typename MatchType>
+Iterator ParallelFindImpl(Iterator first, Iterator last, MatchType match,
+                          std::atomic<bool>& done) {
+  try {
+    unsigned long const length = std::distance(first, last);
+    if (length < (2*min_per_thread)) {
+      for(;(first != last) && !done.load(); ++first) {
+        if (*first == match) {
+          done = true;
+          return first;
+        }
+      }
+      return last;
+    } else {
+      Iterator const mid = first + length / 2;
+      std::future<Iterator> async_result = std::async(&ParallelFindImpl<Iterator, MatchType>, mid, last, match, std::ref(done));
+      Iterator const direct_result = ParallelFindImpl(first, mid, match, done);
+      return (direct_result == mid) ? async_result.get() : direct_result;
+    }
+
+  } catch (...) {
+    done = true;
+    throw;
   }
 }
