@@ -6,6 +6,7 @@
 
 constexpr uint64_t iterations = 1'000'000'000ull;
 
+
 struct Counters {
   std::atomic<uint64_t> counter1{0};
   std::atomic<uint64_t> counter2{0};
