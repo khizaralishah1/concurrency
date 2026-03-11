@@ -2,11 +2,6 @@
 #include <future>
 #include <condition_variable>
 
-/*
-  Not great..
-
-*/
-
 class InterruptFlag {
  public:
   InterruptFlag() : thread_cond(nullptr), thread_cond_any(nullptr) {}
@@ -104,8 +99,10 @@ class InterruptibleThread {
       p.set_value(&this_thread_interrupt_flag);  // set value of promise to flag
       f();
     });
-    // todo: didn't understand this...
-    flag = p.get_future().get();  // wait for future to be ready
+
+    // Gurantess that flag points to this_thread_interrupt_flag. Will only continue once promise
+    // has set the value
+    flag = p.get_future().get();
   }
 
   void Join();
