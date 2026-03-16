@@ -32,52 +32,49 @@ class InterruptFlag {
     ~ClearCVOnDestruct() { this_thread_interrupt_flag.ClearCV(); }
   };
 
-  template <typename Lockable>
-  void Wait(std::condition_variable_any& cv, Lockable& lock) {
+  template <typename Lockable, typename Predicate>
+  void Wait(std::condition_variable_any& cv, Lockable& lock, Predicate predicate) {
     struct CustomLock {
       InterruptFlag* self;
       Lockable& lock;
 
       CustomLock(InterruptFlag* self_, std::condition_variable_any& cv, Lockable& lock_)
           : self(self_), lock(lock_) {
-        self->set_clear_mutex.lock();
-        self->thread_cond_any = &cv;
+        self->set_clear_mutex.lock();  // 1
+        self->thread_cond_any = &cv;   // 2
       }
 
-      void Unlock() {
+      void Unlock() {  // 3
         lock.unlock();
         self->set_clear_mutex.unlock();
       }
 
-      void Lock() { std::lock(self->set_clear_mutex, lock); }
+      void Lock() {
+        std::lock(self->set_clear_mutex, lock);  // 4
+      }
 
       ~CustomLock() {
-        self->thread_cond_any = nullptr;
+        self->thread_cond_any = nullptr;  // 5
         self->set_clear_mutex.unlock();
       }
     };
 
+    /*
+      Case 1: Set occurs before Wait => Caught by first InterruptionPoint
+      Case 2: Set occurs ater custom_lock is constructed
+              => SET sets the flag, but waits on custom lock to notify the cv
+              => WAIT (this function) Sees interrupt and gets out
+              => custom_lock's destructor unlocks
+      Case 3: Set occurs after first InterruptionPoint
+              => SETS the flag but waits on custom_lock
+              => WAIT does cv_wait. Checks predicate and the flag.
+              => The flag is set, so it returns
+    */
+
     CustomLock custom_lock(this, cv, lock);
+    // here: we still have the lock. no interruption is paused
     InterruptionPoint();
-    cv.wait(custom_lock);
-    InterruptionPoint();
-  }
-
-  template <typename Lockable>
-  void InterruptibleWait(std::condition_variable& cv, Lockable& lock) {
-    this_thread_interrupt_flag.Wait(cv, lock);
-  }
-
-  template <typename Predicate>
-  void InterruptibleWait(std::condition_variable& cv, std::unique_lock<std::mutex>& lock,
-                         Predicate predicate) {
-    InterruptionPoint();
-    this_thread_interrupt_flag.SetCV(v);
-    interrupt_flag::ClearCVOnDestruct guard;
-    while (!this_thread_interrupt_flag.IsSet() && !predicate()) {
-      cv.wait_for(lock, std::chrono::milliseconds(1););
-    }
-    this_thread_interrupt_flag.ClearCV();
+    cv.wait(custom_lock, predicate); // calls unlock (releases set_clear_mutex... Set can run)
     InterruptionPoint();
   }
 
@@ -90,6 +87,10 @@ class InterruptFlag {
 
 thread_local InterruptFlag this_thread_interrupt_flag;
 
+struct ThreadInterrupted : std::exception {
+  const char* what() const noexcept override { return "Thread interrupted"; }
+};
+
 class InterruptibleThread {
  public:
   template <typename F>
@@ -100,7 +101,7 @@ class InterruptibleThread {
       f();
     });
 
-    // Gurantess that flag points to this_thread_interrupt_flag. Will only continue once promise
+    // Guarantees that flag points to this_thread_interrupt_flag. Will only continue once promise
     // has set the value
     flag = p.get_future().get();
   }
@@ -113,9 +114,37 @@ class InterruptibleThread {
     if (flag) flag->Set();
   }
 
-  void InterruptionPoint();
-
  private:
   std::thread internal_thread;
   InterruptFlag* flag;
 };
+
+/***************** THESE WILL RUN IN THE GIVEN FUNCTION, AT RELEVANT POINTS ****************/
+
+template <typename Predicate>
+void InterruptibleWait(std::condition_variable& cv, std::unique_lock<std::mutex>& lock,
+                       Predicate predicate) {
+  InterruptionPoint();
+  this_thread_interrupt_flag.SetCV(
+      cv);  // When you will be interrupting this thread by setting the flag, you will see that its
+  // cv was also set, so you wake cv as well
+  InterruptFlag::ClearCVOnDestruct guard;
+  InterruptionPoint();
+  while (!this_thread_interrupt_flag.IsSet() && !predicate) {
+    cv.wait_for(lock, std::chrono::milliseconds(1));
+  }
+  this_thread_interrupt_flag.ClearCV();
+  InterruptionPoint();
+}
+
+template <typename Predicate>
+void InterruptibleWait(std::condition_variable& cv, Lockable& lock, Predicate predicate) {
+  this_thread_interrupt_flag.Wait(cv, lock, predicate);
+}
+
+void InterruptionPoint() {
+  if (this_thread_interrupt_flag.IsSet()) {
+    // Throw thread interrupted, custom
+    throw ThreadInterrupted{};
+  }
+}
