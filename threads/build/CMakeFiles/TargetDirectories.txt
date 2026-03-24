@@ -1,0 +1,3 @@
+/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles/threads_lib.dir
+/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles/edit_cache.dir
+/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles/rebuild_cache.dir

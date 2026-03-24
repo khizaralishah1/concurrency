@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 
+#include "nlohmann/json.hpp"
+
 int main() {
   try {
     boost::asio::io_context io_context;
@@ -28,9 +30,21 @@ int main() {
     while (true) {
       boost::beast::flat_buffer buffer;
       websocket.read(buffer);
-
       std::string msg = boost::beast::buffers_to_string(buffer.data());
-      std::cout << msg << std::endl;
+
+      // Parse JSON
+      auto json_msg = nlohmann::json::parse(msg);
+      std::string event_type = json_msg["e"];
+      std::string symbol = json_msg["s"];
+      double price = std::stod(json_msg["p"].get<std::string>());
+      double quantity = std::stod(json_msg["q"].get<std::string>());
+      long timestamp = json_msg["T"];
+
+      std::cout << "[main]: Event: " << event_type << ", Symbol: " << symbol
+                << ", Price: " << price << ", Quantity: " << quantity
+                << ", Timestamp: " << timestamp << std::endl;
+
+      // std::cout << msg << std::endl;
     }
 
   } catch (std::exception const& e) {

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libthreads_lib.a CMakeFiles/threads_lib.dir/src/InterruptFlag.o CMakeFiles/threads_lib.dir/src/InterruptibleThread.o
+/usr/bin/ranlib libthreads_lib.a
