@@ -1,3 +1,0 @@
-/home/hj/Desktop/khizar-learning/concurrency/hft/build/CMakeFiles/hft.dir
-/home/hj/Desktop/khizar-learning/concurrency/hft/build/CMakeFiles/edit_cache.dir
-/home/hj/Desktop/khizar-learning/concurrency/hft/build/CMakeFiles/rebuild_cache.dir
