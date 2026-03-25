@@ -1,20 +1,24 @@
+#ifndef THREAD_POOL_H
+#define THREAD_POOL_H
+
 #include <vector>
+#include <type_traits>
+#include <atomic>
+#include <functional>
 
 #include "InterruptibleThread.h"
 #include "JoinThreads.h"
 #include "FunctionWrapper.h"
 #include "ThreadTasksQueue.h"
+#include "GlobalQueue.h"
+
+// OLD: typedef FunctionWrapper TaskType;
+using TaskType = FunctionWrapper;
 
 class ThreadPool {
  public:
   static thread_local ThreadTasksQueue* local_queue;
   static thread_local unsigned my_index;
-
-  typedef FunctionWrapper TaskType;
-
-  std::atomic_bool done;
-  // TODO: Implement
-  ThreadSafeQueue<TaskType> global_work_queue;
 
   ThreadPool();
   ~ThreadPool();
@@ -30,7 +34,13 @@ class ThreadPool {
   bool StealTaskFromQueue(TaskType& task);
 
  private:
+  std::atomic_bool done;
+  GlobalQueue<TaskType> global_work_queue;
   std::vector<std::unique_ptr<ThreadTasksQueue>> queues;
   std::vector<InterruptibleThread> threads;
   JoinThreads<InterruptibleThread> joiner;
 };
+
+#include "ThreadPool.tpp"
+
+#endif  // THREAD_POOL_H

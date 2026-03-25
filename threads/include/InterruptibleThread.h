@@ -1,10 +1,9 @@
+#ifndef INTERRUPTIBLE_THREAD_H
+#define INTERRUPTIBLE_THREAD_H
+
 #include <future>
 
 #include "InterruptFlag.h"
-
-struct ThreadInterrupted : std::exception {
-  const char* what() const noexcept override { return "Thread interrupted"; }
-};
 
 class InterruptibleThread {
  public:
@@ -20,8 +19,8 @@ class InterruptibleThread {
   InterruptibleThread& operator=(InterruptibleThread&& other) noexcept;
 
   void join();
+  bool joinable() const;
   void Detach();
-  bool Joinable() const;
 
   void Interrupt();
 
@@ -30,4 +29,6 @@ class InterruptibleThread {
   InterruptFlag* flag;
 };
 
-void InterruptionPoint();
+#include "InterruptibleThread.tpp"
+
+#endif  // INTERRUPTIBLE_THREAD_H

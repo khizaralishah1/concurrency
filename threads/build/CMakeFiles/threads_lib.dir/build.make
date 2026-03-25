@@ -69,47 +69,143 @@ include CMakeFiles/threads_lib.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/threads_lib.dir/flags.make
 
-CMakeFiles/threads_lib.dir/src/InterruptFlag.o: CMakeFiles/threads_lib.dir/flags.make
-CMakeFiles/threads_lib.dir/src/InterruptFlag.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp
-CMakeFiles/threads_lib.dir/src/InterruptFlag.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/threads_lib.dir/src/InterruptFlag.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/InterruptFlag.o -MF CMakeFiles/threads_lib.dir/src/InterruptFlag.o.d -o CMakeFiles/threads_lib.dir/src/InterruptFlag.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp
+CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/CustomLock.cpp
+CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o -MF CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o.d -o CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/CustomLock.cpp
 
-CMakeFiles/threads_lib.dir/src/InterruptFlag.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/InterruptFlag.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp > CMakeFiles/threads_lib.dir/src/InterruptFlag.i
+CMakeFiles/threads_lib.dir/src/CustomLock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/CustomLock.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/CustomLock.cpp > CMakeFiles/threads_lib.dir/src/CustomLock.cpp.i
 
-CMakeFiles/threads_lib.dir/src/InterruptFlag.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/InterruptFlag.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp -o CMakeFiles/threads_lib.dir/src/InterruptFlag.s
+CMakeFiles/threads_lib.dir/src/CustomLock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/CustomLock.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/CustomLock.cpp -o CMakeFiles/threads_lib.dir/src/CustomLock.cpp.s
 
-CMakeFiles/threads_lib.dir/src/InterruptibleThread.o: CMakeFiles/threads_lib.dir/flags.make
-CMakeFiles/threads_lib.dir/src/InterruptibleThread.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp
-CMakeFiles/threads_lib.dir/src/InterruptibleThread.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/threads_lib.dir/src/InterruptibleThread.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/InterruptibleThread.o -MF CMakeFiles/threads_lib.dir/src/InterruptibleThread.o.d -o CMakeFiles/threads_lib.dir/src/InterruptibleThread.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp
+CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/FunctionWrapper.cpp
+CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o -MF CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o.d -o CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/FunctionWrapper.cpp
 
-CMakeFiles/threads_lib.dir/src/InterruptibleThread.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/InterruptibleThread.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp > CMakeFiles/threads_lib.dir/src/InterruptibleThread.i
+CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/FunctionWrapper.cpp > CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.i
 
-CMakeFiles/threads_lib.dir/src/InterruptibleThread.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/InterruptibleThread.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp -o CMakeFiles/threads_lib.dir/src/InterruptibleThread.s
+CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/FunctionWrapper.cpp -o CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.s
+
+CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/GlobalQueue.cpp
+CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o -MF CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o.d -o CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/GlobalQueue.cpp
+
+CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/GlobalQueue.cpp > CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.i
+
+CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/GlobalQueue.cpp -o CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.s
+
+CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp
+CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o -MF CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o.d -o CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp
+
+CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp > CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.i
+
+CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptFlag.cpp -o CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.s
+
+CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp
+CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o -MF CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o.d -o CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp
+
+CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp > CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.i
+
+CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptibleThread.cpp -o CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.s
+
+CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptionPoint.cpp
+CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o -MF CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o.d -o CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptionPoint.cpp
+
+CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptionPoint.cpp > CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.i
+
+CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/InterruptionPoint.cpp -o CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.s
+
+CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadPool.cpp
+CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o -MF CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o.d -o CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadPool.cpp
+
+CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadPool.cpp > CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.i
+
+CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadPool.cpp -o CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.s
+
+CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o: CMakeFiles/threads_lib.dir/flags.make
+CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o: /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadTasksQueue.cpp
+CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o: CMakeFiles/threads_lib.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o -MF CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o.d -o CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o -c /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadTasksQueue.cpp
+
+CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadTasksQueue.cpp > CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.i
+
+CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/hj/Desktop/khizar-learning/concurrency/threads/src/ThreadTasksQueue.cpp -o CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.s
 
 # Object files for target threads_lib
 threads_lib_OBJECTS = \
-"CMakeFiles/threads_lib.dir/src/InterruptFlag.o" \
-"CMakeFiles/threads_lib.dir/src/InterruptibleThread.o"
+"CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o" \
+"CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o" \
+"CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o" \
+"CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o" \
+"CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o" \
+"CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o" \
+"CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o" \
+"CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o"
 
 # External object files for target threads_lib
 threads_lib_EXTERNAL_OBJECTS =
 
-libthreads_lib.a: CMakeFiles/threads_lib.dir/src/InterruptFlag.o
-libthreads_lib.a: CMakeFiles/threads_lib.dir/src/InterruptibleThread.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o
+libthreads_lib.a: CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o
 libthreads_lib.a: CMakeFiles/threads_lib.dir/build.make
 libthreads_lib.a: CMakeFiles/threads_lib.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libthreads_lib.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/hj/Desktop/khizar-learning/concurrency/threads/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX static library libthreads_lib.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/threads_lib.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/threads_lib.dir/link.txt --verbose=$(VERBOSE)
 

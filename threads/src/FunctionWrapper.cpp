@@ -7,8 +7,6 @@ FunctionWrapper::FunctionWrapper(F&& f) : impl(new ImplType<std::decay_t<F>>(std
 
 FunctionWrapper::FunctionWrapper(FunctionWrapper&& other) : impl(std::move(other.impl)) {}
 
-FunctionWrapper& FunctionWrapper::operator=(const FunctionWrapper&) = delete;
-
 FunctionWrapper& FunctionWrapper::operator=(FunctionWrapper&& other) {
   impl = std::move(other.impl);
   return *this;

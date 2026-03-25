@@ -129,35 +129,210 @@ threads_lib/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/build
 .PHONY : threads_lib/fast
 
+#=============================================================================
+# Target rules for targets named thread_pool_demo
+
+# Build rule for target.
+thread_pool_demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 thread_pool_demo
+.PHONY : thread_pool_demo
+
+# fast build rule for target.
+thread_pool_demo/fast:
+	$(MAKE) $(MAKESILENT) -f demo/CMakeFiles/thread_pool_demo.dir/build.make demo/CMakeFiles/thread_pool_demo.dir/build
+.PHONY : thread_pool_demo/fast
+
+src/CustomLock.o: src/CustomLock.cpp.o
+.PHONY : src/CustomLock.o
+
 # target to build an object file
-src/InterruptFlag.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptFlag.o
+src/CustomLock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o
+.PHONY : src/CustomLock.cpp.o
+
+src/CustomLock.i: src/CustomLock.cpp.i
+.PHONY : src/CustomLock.i
+
+# target to preprocess a source file
+src/CustomLock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/CustomLock.cpp.i
+.PHONY : src/CustomLock.cpp.i
+
+src/CustomLock.s: src/CustomLock.cpp.s
+.PHONY : src/CustomLock.s
+
+# target to generate assembly for a file
+src/CustomLock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/CustomLock.cpp.s
+.PHONY : src/CustomLock.cpp.s
+
+src/FunctionWrapper.o: src/FunctionWrapper.cpp.o
+.PHONY : src/FunctionWrapper.o
+
+# target to build an object file
+src/FunctionWrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o
+.PHONY : src/FunctionWrapper.cpp.o
+
+src/FunctionWrapper.i: src/FunctionWrapper.cpp.i
+.PHONY : src/FunctionWrapper.i
+
+# target to preprocess a source file
+src/FunctionWrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.i
+.PHONY : src/FunctionWrapper.cpp.i
+
+src/FunctionWrapper.s: src/FunctionWrapper.cpp.s
+.PHONY : src/FunctionWrapper.s
+
+# target to generate assembly for a file
+src/FunctionWrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.s
+.PHONY : src/FunctionWrapper.cpp.s
+
+src/GlobalQueue.o: src/GlobalQueue.cpp.o
+.PHONY : src/GlobalQueue.o
+
+# target to build an object file
+src/GlobalQueue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o
+.PHONY : src/GlobalQueue.cpp.o
+
+src/GlobalQueue.i: src/GlobalQueue.cpp.i
+.PHONY : src/GlobalQueue.i
+
+# target to preprocess a source file
+src/GlobalQueue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.i
+.PHONY : src/GlobalQueue.cpp.i
+
+src/GlobalQueue.s: src/GlobalQueue.cpp.s
+.PHONY : src/GlobalQueue.s
+
+# target to generate assembly for a file
+src/GlobalQueue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.s
+.PHONY : src/GlobalQueue.cpp.s
+
+src/InterruptFlag.o: src/InterruptFlag.cpp.o
 .PHONY : src/InterruptFlag.o
 
-# target to preprocess a source file
-src/InterruptFlag.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptFlag.i
+# target to build an object file
+src/InterruptFlag.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o
+.PHONY : src/InterruptFlag.cpp.o
+
+src/InterruptFlag.i: src/InterruptFlag.cpp.i
 .PHONY : src/InterruptFlag.i
 
-# target to generate assembly for a file
-src/InterruptFlag.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptFlag.s
+# target to preprocess a source file
+src/InterruptFlag.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.i
+.PHONY : src/InterruptFlag.cpp.i
+
+src/InterruptFlag.s: src/InterruptFlag.cpp.s
 .PHONY : src/InterruptFlag.s
 
-# target to build an object file
-src/InterruptibleThread.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptibleThread.o
+# target to generate assembly for a file
+src/InterruptFlag.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.s
+.PHONY : src/InterruptFlag.cpp.s
+
+src/InterruptibleThread.o: src/InterruptibleThread.cpp.o
 .PHONY : src/InterruptibleThread.o
 
-# target to preprocess a source file
-src/InterruptibleThread.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptibleThread.i
+# target to build an object file
+src/InterruptibleThread.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o
+.PHONY : src/InterruptibleThread.cpp.o
+
+src/InterruptibleThread.i: src/InterruptibleThread.cpp.i
 .PHONY : src/InterruptibleThread.i
 
-# target to generate assembly for a file
-src/InterruptibleThread.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptibleThread.s
+# target to preprocess a source file
+src/InterruptibleThread.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.i
+.PHONY : src/InterruptibleThread.cpp.i
+
+src/InterruptibleThread.s: src/InterruptibleThread.cpp.s
 .PHONY : src/InterruptibleThread.s
+
+# target to generate assembly for a file
+src/InterruptibleThread.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.s
+.PHONY : src/InterruptibleThread.cpp.s
+
+src/InterruptionPoint.o: src/InterruptionPoint.cpp.o
+.PHONY : src/InterruptionPoint.o
+
+# target to build an object file
+src/InterruptionPoint.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o
+.PHONY : src/InterruptionPoint.cpp.o
+
+src/InterruptionPoint.i: src/InterruptionPoint.cpp.i
+.PHONY : src/InterruptionPoint.i
+
+# target to preprocess a source file
+src/InterruptionPoint.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.i
+.PHONY : src/InterruptionPoint.cpp.i
+
+src/InterruptionPoint.s: src/InterruptionPoint.cpp.s
+.PHONY : src/InterruptionPoint.s
+
+# target to generate assembly for a file
+src/InterruptionPoint.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.s
+.PHONY : src/InterruptionPoint.cpp.s
+
+src/ThreadPool.o: src/ThreadPool.cpp.o
+.PHONY : src/ThreadPool.o
+
+# target to build an object file
+src/ThreadPool.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o
+.PHONY : src/ThreadPool.cpp.o
+
+src/ThreadPool.i: src/ThreadPool.cpp.i
+.PHONY : src/ThreadPool.i
+
+# target to preprocess a source file
+src/ThreadPool.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.i
+.PHONY : src/ThreadPool.cpp.i
+
+src/ThreadPool.s: src/ThreadPool.cpp.s
+.PHONY : src/ThreadPool.s
+
+# target to generate assembly for a file
+src/ThreadPool.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.s
+.PHONY : src/ThreadPool.cpp.s
+
+src/ThreadTasksQueue.o: src/ThreadTasksQueue.cpp.o
+.PHONY : src/ThreadTasksQueue.o
+
+# target to build an object file
+src/ThreadTasksQueue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o
+.PHONY : src/ThreadTasksQueue.cpp.o
+
+src/ThreadTasksQueue.i: src/ThreadTasksQueue.cpp.i
+.PHONY : src/ThreadTasksQueue.i
+
+# target to preprocess a source file
+src/ThreadTasksQueue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.i
+.PHONY : src/ThreadTasksQueue.cpp.i
+
+src/ThreadTasksQueue.s: src/ThreadTasksQueue.cpp.s
+.PHONY : src/ThreadTasksQueue.s
+
+# target to generate assembly for a file
+src/ThreadTasksQueue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/threads_lib.dir/build.make CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.s
+.PHONY : src/ThreadTasksQueue.cpp.s
 
 # Help Target
 help:
@@ -167,13 +342,32 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... thread_pool_demo"
 	@echo "... threads_lib"
+	@echo "... src/CustomLock.o"
+	@echo "... src/CustomLock.i"
+	@echo "... src/CustomLock.s"
+	@echo "... src/FunctionWrapper.o"
+	@echo "... src/FunctionWrapper.i"
+	@echo "... src/FunctionWrapper.s"
+	@echo "... src/GlobalQueue.o"
+	@echo "... src/GlobalQueue.i"
+	@echo "... src/GlobalQueue.s"
 	@echo "... src/InterruptFlag.o"
 	@echo "... src/InterruptFlag.i"
 	@echo "... src/InterruptFlag.s"
 	@echo "... src/InterruptibleThread.o"
 	@echo "... src/InterruptibleThread.i"
 	@echo "... src/InterruptibleThread.s"
+	@echo "... src/InterruptionPoint.o"
+	@echo "... src/InterruptionPoint.i"
+	@echo "... src/InterruptionPoint.s"
+	@echo "... src/ThreadPool.o"
+	@echo "... src/ThreadPool.i"
+	@echo "... src/ThreadPool.s"
+	@echo "... src/ThreadTasksQueue.o"
+	@echo "... src/ThreadTasksQueue.i"
+	@echo "... src/ThreadTasksQueue.s"
 .PHONY : help
 
 

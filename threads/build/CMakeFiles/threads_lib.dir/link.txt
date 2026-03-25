@@ -1,2 +1,2 @@
-/usr/bin/ar qc libthreads_lib.a CMakeFiles/threads_lib.dir/src/InterruptFlag.o CMakeFiles/threads_lib.dir/src/InterruptibleThread.o
+/usr/bin/ar qc libthreads_lib.a CMakeFiles/threads_lib.dir/src/CustomLock.cpp.o CMakeFiles/threads_lib.dir/src/FunctionWrapper.cpp.o CMakeFiles/threads_lib.dir/src/GlobalQueue.cpp.o CMakeFiles/threads_lib.dir/src/InterruptFlag.cpp.o CMakeFiles/threads_lib.dir/src/InterruptibleThread.cpp.o CMakeFiles/threads_lib.dir/src/InterruptionPoint.cpp.o CMakeFiles/threads_lib.dir/src/ThreadPool.cpp.o CMakeFiles/threads_lib.dir/src/ThreadTasksQueue.cpp.o
 /usr/bin/ranlib libthreads_lib.a

@@ -1,3 +1,6 @@
+#ifndef THREAD_TASKS_QUEUE_H
+#define THREAD_TASKS_QUEUE_H
+
 #include <mutex>
 #include <deque>
 
@@ -31,3 +34,5 @@ class ThreadTasksQueue {
   std::deque<DataType> queue;
   mutable std::mutex mutex;
 };
+
+#endif  // THREAD_TASKS_QUEUE_H

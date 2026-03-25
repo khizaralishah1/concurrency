@@ -1,6 +1,10 @@
 #include <future>
+#include <functional>
 
 #include "ThreadPool.h"
+
+thread_local ThreadTasksQueue* ThreadPool::local_queue = nullptr;
+thread_local unsigned ThreadPool::my_index = 0;
 
 ThreadPool::ThreadPool() : done(false), joiner(threads) {
   unsigned const thread_count = std::thread::hardware_concurrency();
@@ -46,25 +50,23 @@ bool ThreadPool::StealTaskFromQueue(TaskType& task) {
 }
 
 // std::result_of was depreciated
-template <typename F, typename... Args>
-std::future<std::invoke_result_t<F, Args...>> ThreadPool::Submit(F&& f, Args&&... args) {
-  using result_type = std::invoke_result_t<F, Args...>;
+// template <typename F, typename... Args>
+// std::future<std::invoke_result_t<F, Args...>> ThreadPool::Submit(F&& f, Args&&... args) {
+//   using result_type = std::invoke_result_t<F, Args...>;
 
-  std::packaged_task<result_type()> task(f);
+//   auto task = std::packaged_task<result_type()>(
+//       [func = std::forward<F>(f), ... captured_args = std::forward<Args>(args)]() mutable {
+//         return std::invoke(std::move(func), std::move(captured_args)...);
+//       });
 
-  auto task = std::packaged_task<result_type()>(
-      [func = std::forward<F>(f), ... captured_args = std::forward<Args>(args)]() mutable {
-        return std::invoke(std::move(func), std::move(captured_args)...);
-      });
+//   auto result = task.get_future();
 
-  auto result = task.get_future();
+//   if (local_queue)
+//     local_queue->Push(std::move(task));
+//   else
+//     global_work_queue.Push(std::move(task));
 
-  if (local_queue)
-    local_queue->Push(std::move(task));
-  else
-    global_work_queue.Push(std::move(task));
-
-  return result;
-}
+//   return result;
+// }
 
 ThreadPool::~ThreadPool() { done = true; }

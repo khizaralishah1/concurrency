@@ -1,3 +1,6 @@
+#ifndef JOIN_THREADS_H
+#define JOIN_THREADS_H
+
 #include <thread>
 #include <vector>
 
@@ -10,3 +13,7 @@ class JoinThreads {
  private:
   std::vector<Thread>& threads;
 };
+
+#include "JoinThreads.tpp"
+
+#endif // JOIN_THREADS_H

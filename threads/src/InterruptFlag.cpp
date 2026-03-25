@@ -1,5 +1,4 @@
 #include "InterruptFlag.h"
-#include "CustomLock.h"
 
 InterruptFlag::InterruptFlag() : thread_cond(nullptr), thread_cond_any(nullptr) {}
 
@@ -43,9 +42,9 @@ void Wait(std::condition_variable_any& cv, Lockable& lock, Predicate predicate) 
             => The flag is set, so it returns
   */
 
-  CustomLock custom_lock(this, cv, lock);
+  // CustomLock custom_lock(this, cv, lock);
   // here: we still have the lock. no interruption is paused
-  InterruptionPoint();
-  cv.wait(custom_lock, predicate);  // calls unlock (releases set_clear_mutex... Set can run)
-  InterruptionPoint();
+  // InterruptionPoint();
+  // cv.wait(custom_lock, predicate);  // calls unlock (releases set_clear_mutex... Set can run)
+  // InterruptionPoint();
 }

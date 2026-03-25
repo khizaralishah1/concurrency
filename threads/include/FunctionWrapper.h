@@ -1,3 +1,6 @@
+#ifndef FUNCTION_WRAPPER_H
+#define FUNCTION_WRAPPER_H
+
 #include <memory>
 
 struct ImplBase {
@@ -23,8 +26,10 @@ class FunctionWrapper {
   FunctionWrapper& operator=(const FunctionWrapper&) = delete;
   FunctionWrapper& operator=(FunctionWrapper&& other);
 
-  void operator()() { impl->Call(); }
+  void operator()();
 
  private:
   std::unique_ptr<ImplBase> impl;
 };
+
+#endif // FUNCTION_WRAPPER_H

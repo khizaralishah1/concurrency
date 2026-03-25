@@ -1,8 +1,43 @@
+#ifndef INTERRUPT_FLAG_H
+#define INTERRUPT_FLAG_H
+
 #include <atomic>
 #include <thread>
 #include <condition_variable>
+#include <mutex>
+#include <future>
+
+void InterruptionPoint();
+
+template <typename T>
+void InterruptibleWait(std::future<T>& uf);
+
+template <typename Lockable, typename Predicate>
+void InterruptibleWait(std::condition_variable& cv, Lockable& lock, Predicate predicate);
+
+template <typename Predicate>
+void InterruptibleWait(std::condition_variable& cv, std::unique_lock<std::mutex>& lock,
+                       Predicate predicate);
+
+struct ThreadInterrupted : std::exception {
+  const char* what() const noexcept override { return "Thread interrupted"; }
+};
 
 class InterruptFlag;
+
+/**************** CUSTOM LOCK *****************/
+
+template <typename Lockable>
+struct CustomLock {
+  InterruptFlag* self;
+  Lockable& lock;
+
+  CustomLock(InterruptFlag* self_, std::condition_variable_any& cv, Lockable& lock_);
+  ~CustomLock();
+
+  void Unlock();
+  void Lock();
+};
 
 extern thread_local InterruptFlag this_thread_interrupt_flag;
 
@@ -32,7 +67,7 @@ class InterruptFlag {
               => The flag is set, so it returns
     */
 
-    CustomLock custom_lock(this, cv, lock);
+    CustomLock<Lockable> custom_lock(this, cv, lock);
     // here: we still have the lock. no interruption is paused
     InterruptionPoint();
     cv.wait(custom_lock, predicate);  // calls unlock (releases set_clear_mutex... Set can run)
@@ -45,3 +80,5 @@ class InterruptFlag {
   std::condition_variable_any* thread_cond_any;
   std::mutex set_clear_mutex;
 };
+
+#endif  // INTERRUPT_FLAG_H
