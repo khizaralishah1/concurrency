@@ -7,7 +7,7 @@
 
 class ThreadPool {
  public:
-  static thread_local ThreadTasksQueue* local_work_queue;
+  static thread_local ThreadTasksQueue* local_queue;
   static thread_local unsigned my_index;
 
   typedef FunctionWrapper TaskType;

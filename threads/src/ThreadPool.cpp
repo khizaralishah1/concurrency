@@ -19,7 +19,7 @@ ThreadPool::ThreadPool() : done(false), joiner(threads) {
 
 void ThreadPool::Worker(unsigned my_index_) {
   my_index = my_index_;
-  local_work_queue = queues[my_index].get();
+  local_queue = queues[my_index].get();
   while (!done) RunPendingTask();
 }
 
@@ -32,7 +32,7 @@ void ThreadPool::RunPendingTask() {
 }
 
 bool ThreadPool::PopTaskFromLocalQueue(TaskType& task) {
-  return local_work_queue && local_work_queue->TryPop(task);
+  return local_queue && local_queue->TryPop(task);
 }
 
 bool ThreadPool::PopTaskFromGlobalQueue(TaskType& task) { return global_work_queue.TryPop(task); }
@@ -59,8 +59,8 @@ std::future<std::invoke_result_t<F, Args...>> ThreadPool::Submit(F&& f, Args&&..
 
   auto result = task.get_future();
 
-  if (local_work_queue)
-    local_work_queue->Push(std::move(task));
+  if (local_queue)
+    local_queue->Push(std::move(task));
   else
     global_work_queue.Push(std::move(task));
 
