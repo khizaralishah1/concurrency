@@ -7,37 +7,6 @@
   std::function<> because that requires stored function objects to be copy-constructable
 */
 
-class FunctionWrapper {
- public:
-  template <typename F>
-  FunctionWrapper(F&& f) : impl(new ImplType<F>(std::move(f))) {}
-  FunctionWrapper() = default;
-  FunctionWrapper(FunctionWrapper&& other) : impl(std::move(other.impl)) {}
-  FunctionWrapper(const FunctionWrapper&) = delete;
-  FunctionWrapper(FunctionWrapper&) = delete;
-  FunctionWrapper& operator=(const FunctionWrapper&) = delete;
-  FunctionWrapper& operator=(FunctionWrapper&& other) {
-    impl = std::move(other.impl);
-    return *this;
-  }
-
-  void operator()() { impl->Call(); }
-
- private:
-  struct ImplBase {
-    virtual void Call() = 0;
-    virtual ~ImplBase() {}
-  };
-
-  std::unique_ptr<ImplBase> impl;
-  template <typename F>
-  struct ImplType : ImplBase {
-    F f;
-    ImplType(F&& f_) : f(std::move(f_)) {}
-    void Call() { f(); }
-  };
-};
-
 template <typename T>
 class ThreadSafeQueue {};
 

@@ -1,53 +1,36 @@
-#include <t
+#include <vector>
 
 #include "InterruptibleThread.h"
+#include "JoinThreads.h"
+#include "FunctionWrapper.h"
+#include "ThreadTasksQueue.h"
 
 class ThreadPool {
  public:
-  typedef FunctionWrapper task_type;
+  static thread_local ThreadTasksQueue* local_work_queue;
+  static thread_local unsigned my_index;
+
+  typedef FunctionWrapper TaskType;
 
   std::atomic_bool done;
-  ThreadSafeQueue<task_type> pool_work_queue;
-  std::vector<std::unique_ptr<WorkStealingQueue>> queues;
-  std::vector<InterruptibleThread> threads;
-  JoinThreads joiner;
-
-  static thread_local WorkStealingQueue* local_work_queue;
-  static thread_local unsigned my_index;
+  // TODO: Implement
+  ThreadSafeQueue<TaskType> global_work_queue;
 
   ThreadPool();
   ~ThreadPool();
 
-  template <typename F>
-  std::future<typename std::result_of<F()>::type> Submit(F f);
+  // TODO: Do we have to call F() to see the invoked result?
+  template <typename F, typename... Args>
+  std::future<std::invoke_result_t<F, Args...>> Submit(F&& f, Args&&... args);
 
-  void Worker(unsigned my_index_) {
-    my_index = my_index_;
-    local_work_queue = queues[my_index].get();
-    while (!done) RunPendingTask();
-  }
-
-  bool PopTaskFromLocalQueue(task_type& task) {
-    return local_work_queue && local_work_queue->TryPop(task);
-  }
-
-  bool PopTaskFromPoolQueue(task_type& task) { return pool_work_queue.TryPop(task); }
-
-  bool StealTaskFromQueue(task_type& task) {
-    for (unsigned i = 0; i < queues.size(); ++i) {
-      unsigned const index = (my_index + i + 1) % queues.size();
-      if (queues[index]->TrySteal(task)) return true;
-    }
-    return false;
-  }
-
-  void RunPendingTask() {
-    task_type task;
-    if (PopTaskFromLocalQueue(task) || PopTaskFromPoolQueue(task) || StealTaskFromQueue(task)) {
-      task();
-    } else
-      std::this_thread::yield();
-  }
+  void Worker(unsigned my_index_);
+  void RunPendingTask();
+  bool PopTaskFromLocalQueue(TaskType& task);
+  bool PopTaskFromGlobalQueue(TaskType& task);
+  bool StealTaskFromQueue(TaskType& task);
 
  private:
+  std::vector<std::unique_ptr<ThreadTasksQueue>> queues;
+  std::vector<InterruptibleThread> threads;
+  JoinThreads<InterruptibleThread> joiner;
 };

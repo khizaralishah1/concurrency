@@ -11,11 +11,11 @@ InterruptibleThread::InterruptibleThread(F&& f, Args&&... args) {
   std::promise<InterruptFlag*> p;
   // Forward the external f and args properly (rvalues are forwarded using std::foward)
   internal_thread = std::thread(
-      [f = std::forward<F>(f), ... CapturedArgs = std::forward<Args>(args), &p]() mutable {
+      [func = std::forward<F>(f), ... CapturedArgs = std::forward<Args>(args), &p]() mutable {
         p.set_value(&this_thread_interrupt_flag);
 
         // Call function with args
-        std::invoke(std::move(f), std::move(CapturedArgs)...);
+        std::invoke(std::move(func), std::move(CapturedArgs)...);
       });
 
   // Guarantees that flag points to this_thread_interrupt_flag. Will only continue once promise
@@ -27,8 +27,23 @@ void InterruptibleThread::Interrupt() {
   if (flag) flag->Set();
 }
 
-void InterruptibleThread::Join() {
+void InterruptibleThread::join() {
   if (internal_thread.joinable()) internal_thread.join();
+}
+
+// Allow move
+InterruptibleThread::InterruptibleThread(InterruptibleThread&& other) noexcept
+    : internal_thread(std::move(other.internal_thread)), flag(other.flag) {
+  other.flag = nullptr;
+}
+
+InterruptibleThread& InterruptibleThread::operator=(InterruptibleThread&& other) noexcept {
+  if (this != &other) {
+    internal_thread = std::move(other.internal_thread);
+    flag = other.flag;
+    other.flag = nullptr;
+  }
+  return *this;
 }
 
 /***************** THESE WILL RUN IN THE GIVEN FUNCTION, AT RELEVANT POINTS ****************/

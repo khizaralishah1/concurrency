@@ -15,44 +15,7 @@
 */
 class FunctionWrapper {};
 
-class WorkStealingQueue {
- public:
-  typedef FunctionWrapper data_type;
 
-  WorkStealingQueue() {}
-  WorkStealingQueue(const WorkStealingQueue& other) = delete;
-  WorkStealingQueue& operator=(const WorkStealingQueue& other) = delete;
-
-  void Push(data_type data) {
-    std::unique_lock<std::mutex> lock(mutex);
-    queue.push_front(std::move(data));
-  }
-
-  bool Empty() const {
-    std::unique_lock<std::mutex> lock(mutex);
-    return queue.empty();
-  }
-
-  bool TryPop(data_type& result) {
-    std::unique_lock<std::mutex> lock(mutex);
-    if (queue.empty()) return false;
-    result = std::move(queue.front());
-    queue.pop_back();
-    return true;
-  }
-
-  bool TrySteal(data_type& result) {
-    std::unique_lock<std::mutex> lock(mutex);
-    if (queue.empty()) return false;
-    result = std::move(queue.back());
-    queue.pop_back();
-    return true;
-  }
-
- private:
-  std::deque<data_type> queue;
-  mutable std::mutex mutex;
-};
 
 template <typename T>
 class ThreadSafeQueue {};
