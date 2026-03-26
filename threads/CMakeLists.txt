@@ -1,3 +1,5 @@
+# MY NOTES: https://docs.google.com/document/d/1ZTjM63CPsz6-59BuadpEmnDrbWCRKH1jKzolfXFHsFM/edit?usp=sharing
+
 cmake_minimum_required(VERSION 3.22.0)
 
 set(CMAKE_CXX_STANDARD 20)
