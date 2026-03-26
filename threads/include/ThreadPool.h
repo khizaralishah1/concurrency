@@ -26,6 +26,9 @@ class ThreadPool {
   template <typename F, typename... Args>
   std::future<std::invoke_result_t<F, Args...>> Submit(F&& f, Args&&... args);
 
+  template <typename F, typename... Args>
+  std::future<std::invoke_result_t<F, Args...>> SubmitToThread(unsigned int thread_id, F&& f, Args&&... args);
+
  private:
   std::atomic_bool done;
   GlobalQueue<TaskType> global_work_queue;

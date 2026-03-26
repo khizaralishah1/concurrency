@@ -34,6 +34,8 @@ void ThreadPool::Worker(unsigned my_index_) {
 void ThreadPool::RunPendingTask() {
   TaskType task;
   if (PopTaskFromLocalQueue(task) || PopTaskFromGlobalQueue(task) || StealTaskFromQueue(task)) {
+    std::cout << "[ThreadPool::RunPendingTask]: Thread " << my_index << "running the task"
+              << std::endl;
     task();
   } else
     std::this_thread::yield();
