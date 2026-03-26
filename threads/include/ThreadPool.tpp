@@ -10,10 +10,13 @@ std::future<std::invoke_result_t<F, Args...>> ThreadPool::Submit(F&& f, Args&&..
 
   auto result = task.get_future();
 
-  if (local_queue)
+  if (local_queue) {
+    std::cout << "[ThreadPool::Submit]: Task added to local queue" << std::endl;
     local_queue->Push(std::move(task));
-  else
+  } else {
+    std::cout << "[ThreadPool::Submit]: Task added to global queue" << std::endl;
     global_work_queue.Push(std::move(task));
+  }
 
   return result;
 }

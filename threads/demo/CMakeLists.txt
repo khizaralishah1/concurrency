@@ -1,2 +1,2 @@
-add_executable(thread_pool_demo DemoThreadPool.cpp)
-target_link_libraries(thread_pool_demo PUBLIC threads_lib)
+add_executable(demo_thread_pool DemoThreadPool.cpp)
+target_link_libraries(demo_thread_pool PUBLIC threads_lib)

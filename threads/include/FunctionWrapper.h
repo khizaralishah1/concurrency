@@ -32,4 +32,6 @@ class FunctionWrapper {
   std::unique_ptr<ImplBase> impl;
 };
 
+#include "FunctionWrapper.tpp"
+
 #endif // FUNCTION_WRAPPER_H
